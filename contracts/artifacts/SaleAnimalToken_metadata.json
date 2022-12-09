@@ -37,6 +37,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "getOnSaleAnimalTokenLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "mintAnimalTokenAddress",
 				"outputs": [
 					{
@@ -73,6 +86,19 @@
 						"internalType": "uint256",
 						"name": "_animalTokenId",
 						"type": "uint256"
+					}
+				],
+				"name": "puerchaseAnimalToken",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_animalTokenId",
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
@@ -93,7 +119,17 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"getOnSaleAnimalTokenLength()": {
+					"notice": "판매 중인 토큰의 배열의 길이 출력하는 함수 "
+				},
+				"puerchaseAnimalToken(uint256)": {
+					"notice": "token 구매 함수 "
+				},
+				"setForSaleAnimalToken(uint256,uint256)": {
+					"notice": "token 판매 함수 "
+				}
+			},
 			"version": 1
 		}
 	},
@@ -218,11 +254,11 @@
 			]
 		},
 		"SaleAnimalToken.sol": {
-			"keccak256": "0xe00343d77ec7808fcee407df9b50b6425f89f2ddc8de3879713ff9fdac57ff2d",
+			"keccak256": "0x5ae894c769c4e9146a2b7f68de1a6cd552882f3324d501932567f0a192851a4d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d34d928a8ea25fc536ff5b2ce72e9a8b3565a01860bde628f3311df864d380cc",
-				"dweb:/ipfs/QmNWmsgG68ZQH1DZL7kQUuDp3594PYwEtvD6Gcizws4ar9"
+				"bzz-raw://9364bc9c04bcf11f79601c1353959496f658de547fec5fd0f8fb3e622caf4110",
+				"dweb:/ipfs/QmPhk6VXnSmnnpMkE9nd7BZYwZjUWM8A9Pq8BCWaBwKFoo"
 			]
 		}
 	},
