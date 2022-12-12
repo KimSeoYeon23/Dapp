@@ -41,7 +41,7 @@ const Main: FC<MainProps> = ({account}) => {
     }
 
     return (
-        <Flex w='full' h='100vh' justifyContent='center' alignItems='center' flexDirection='column'>
+        <Flex w='full' h='100vh' justifyContent='center' alignItems='center' direction='column'>
             <Box>
                 {newAnimalType ? (
                     <AnimalCard animalType={newAnimalType} />

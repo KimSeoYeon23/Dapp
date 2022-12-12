@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {Image, AspectRatio} from '@chakra-ui/react'
+import {Image} from '@chakra-ui/react'
 
 interface AnimalCardProps {
     animalType: string;
@@ -7,7 +7,7 @@ interface AnimalCardProps {
 
 const AnimalCard : FC<AnimalCardProps> = ({animalType}) => {
     return (
-        <Image src={`images/${animalType}.png`} width={150} height={150} />
+        <Image src={`images/${animalType}.png`} w={150} h={150} />
     )
 }
 
