@@ -52,7 +52,19 @@ const MyAnimal: FC<MyAnimalProps> = ({account}) => {
     }
 
     const onClickApproveToggle = async () => {
-        
+        try {
+            if(!account) return;
+
+            const response = await mintAnimalTokenContract.methods
+                .setApprovalForAll(saleAnimalAddress, !saleStatus)
+                .send({from : account});
+
+            if(response.status) {
+                setSaleStatus(!saleStatus);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     useEffect(() => {
@@ -63,7 +75,7 @@ const MyAnimal: FC<MyAnimalProps> = ({account}) => {
 
     return (
         <>
-            <Flex alignItems='center' mb='3'>
+            <Flex alignItems='center'>
                 <Text display='inline-block'>
                 Sale Status : {saleStatus ? 'True' : 'False'}
                 </Text>
@@ -71,7 +83,7 @@ const MyAnimal: FC<MyAnimalProps> = ({account}) => {
                     {saleStatus ? "Cancel" : "Approve"}
                 </Button>
             </Flex>
-            <Grid templateColumns='repeat(4, 1fr)' gap={8}> 
+            <Grid templateColumns='repeat(4, 1fr)' gap={8} mt={4}> 
                 {animalCardArray &&
                     animalCardArray.map((v, i) => {
                         return <AnimalCard key={i} animalType={v} />
