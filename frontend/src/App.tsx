@@ -31,7 +31,7 @@ const App: FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main account={account} />} />
       </Routes>
     </Router>
   );
