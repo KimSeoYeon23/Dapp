@@ -1,10 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
 import {HashRouter as Router, Route, Routes} from 'react-router-dom';
-import {Button} from '@chakra-ui/react';
 import Main from "./routes/Main";
 
 const App: FC = () => {
-  const [account, setAccount] = useState();
+  const [account, setAccount] = useState('');
 
   const getAccount = async () => {
     try {
