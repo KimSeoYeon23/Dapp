@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
-import { mintAnimalTokenContract } from "../web3Config";
-import { Grid } from '@chakra-ui/react';
+import { Button, Flex, Grid, Text } from '@chakra-ui/react';
 import AnimalCard from "../components/AnimalCard";
+import {mintAnimalTokenContract, saleAnimalAddress } from './../web3Config';
 
 interface MyAnimalProps {
     account: string;
@@ -9,6 +9,7 @@ interface MyAnimalProps {
 
 const MyAnimal: FC<MyAnimalProps> = ({account}) => {
     const [animalCardArray, setAnimalCardArray] = useState<string[]>();
+    const [saleStatus, setSaleStatus] = useState<boolean>(false);
 
     const getAnimalTokens = async () => {
         try {
@@ -36,20 +37,49 @@ const MyAnimal: FC<MyAnimalProps> = ({account}) => {
         }
     }
 
+    const getIsApprovedForAll = async () => {
+        try {
+            const response = await mintAnimalTokenContract.methods
+                .isApprovedForAll(account, saleAnimalAddress)
+                .call();
+
+                if(response) {
+                    setSaleStatus(response);
+                }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const onClickApproveToggle = async () => {
+        
+    }
+
     useEffect(() => {
         if(!account) return;
         getAnimalTokens();
+        getIsApprovedForAll();
     }, [account]);
 
     return (
-        <Grid templateColumns='repeat(4, 1fr)' gap={8}> 
-            {animalCardArray &&
-                animalCardArray.map((v, i) => {
-                    return <AnimalCard key={i} animalType={v} />
-                })
+        <>
+            <Flex alignItems='center' mb='3'>
+                <Text display='inline-block'>
+                Sale Status : {saleStatus ? 'True' : 'False'}
+                </Text>
+                <Button size='xs' ml='2' colorScheme={saleStatus ? "red" : "blue"} onClick={onClickApproveToggle}>
+                    {saleStatus ? "Cancel" : "Approve"}
+                </Button>
+            </Flex>
+            <Grid templateColumns='repeat(4, 1fr)' gap={8}> 
+                {animalCardArray &&
+                    animalCardArray.map((v, i) => {
+                        return <AnimalCard key={i} animalType={v} />
+                    })
 
-            }
-        </Grid>
+                }
+            </Grid>
+        </>
     )
 }
 
