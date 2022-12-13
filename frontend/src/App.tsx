@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Layout from "./components/Layout";
 import Main from "./routes/Main";
 import MyAnimal from './routes/MyAnimal';
+import SaleAnimal from './routes/SaleAnimal';
 
 const App: FC = () => {
   const [account, setAccount] = useState('');
@@ -35,6 +36,7 @@ const App: FC = () => {
         <Routes>
           <Route path="/" element={<Main account={account} />} />
           <Route path='my-animal' element={<MyAnimal account={account} />} />
+          <Route path='sale-animal' element={<SaleAnimal account={account} />} />
         </Routes>
       </Layout>
     </BrowserRouter>
