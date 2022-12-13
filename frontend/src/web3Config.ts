@@ -3,11 +3,6 @@ import Web3 from 'web3';
 
 const mintAnimalTokenAbi: AbiItem[] = [
 	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -55,6 +50,31 @@ const mintAnimalTokenAbi: AbiItem[] = [
 			}
 		],
 		"name": "ApprovalForAll",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
 		"type": "event"
 	},
 	{
@@ -152,29 +172,17 @@ const mintAnimalTokenAbi: AbiItem[] = [
 		"type": "function"
 	},
 	{
-		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": true,
 				"internalType": "address",
-				"name": "from",
+				"name": "_saleAnimalToken",
 				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
 			}
 		],
-		"name": "Transfer",
-		"type": "event"
+		"name": "setSaleAnimalToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -198,6 +206,11 @@ const mintAnimalTokenAbi: AbiItem[] = [
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	},
 	{
 		"inputs": [
@@ -232,6 +245,42 @@ const mintAnimalTokenAbi: AbiItem[] = [
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_animalTokenOwner",
+				"type": "address"
+			}
+		],
+		"name": "getAnimalTokens",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "animalTokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "animalType",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "animalPrice",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct MintAnimalToken.AnimalTokenData[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
 		"stateMutability": "view",
@@ -305,6 +354,19 @@ const mintAnimalTokenAbi: AbiItem[] = [
 		"outputs": [
 			{
 				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "saleAnimalToken",
+		"outputs": [
+			{
+				"internalType": "contract SaleAnimalToken",
 				"name": "",
 				"type": "address"
 			}
@@ -483,6 +545,25 @@ const saleAnimalTokenAbi: AbiItem[] = [
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_animalTokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "getAniamlTokenPrice",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "getOnSaleAnimalTokenLength",
 		"outputs": [
@@ -529,8 +610,8 @@ const saleAnimalTokenAbi: AbiItem[] = [
 	}
 ];
 
-const mintAnimalAddress = "0x0265D7CAF782FcC9DeBCfDF56F44BFE8fACeCf94";
-export const saleAnimalAddress = "0xC295175Ec74a4c95439166b6d74070a015C69170";
+const mintAnimalAddress = "0x09a30209D351D2B47845413A15e4677d22a85289";
+export const saleAnimalAddress = "0x0Be27bbAC8F8caA98B661b41218f6Da2608747a7";
 
 export const web3 = new Web3(window.ethereum);
 export const mintAnimalTokenContract = new web3.eth.Contract(
