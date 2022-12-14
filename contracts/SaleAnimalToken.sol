@@ -37,7 +37,7 @@ contract SaleAnimalToken {
 
     // public 뒤에 payalbe을 붙여야 ETH, MATIC등 코인이 거래되는 함수를 만들 수 있다.
     /** token 구매 함수 */
-    function puerchaseAnimalToken(uint256 _animalTokenId) public payable {
+    function purchaseAnimalToken(uint256 _animalTokenId) public payable {
         uint256 price = animalTokenPrices[_animalTokenId];
         address animalTokenOwner = mintAnimalTokenAddress.ownerOf(_animalTokenId);
 
