@@ -51,7 +51,7 @@ const SaleAnimal: FC<SaleAnimalProps> = ({account}) => {
             {saleAnimalCardArray &&
                 saleAnimalCardArray.map((v, i) => {
                     return (
-                        <SaleAnimalCard key={i} animalToeknId={v.animalTokenId} animalType={v.animalType} animalPrice={v.animalPrice}/>
+                        <SaleAnimalCard key={i} account={account} animalTokenId={v.animalTokenId} animalType={v.animalType} animalPrice={v.animalPrice}/>
                     )
                 })
             }
