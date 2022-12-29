@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import { Box, Button, Flex, Stack, Text } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 
-const Layout: FC = ({children}) => {
+const Layout: FC = ({ children }) => {
     return (
         <Stack h='100vh'>
             <Flex bg='purple.200' p={4} justifyContent='space-around' alignItems='center'>
